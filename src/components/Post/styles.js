@@ -19,6 +19,7 @@ const styles = StyleSheet.create({
   },
   group: {
     flex: 1,
+    flexDirection: 'column',
     alignItems: 'center',
     justifyContent: 'center',
   },
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
 
   },
   score: {
-
+  
   },
   mainContainer: {
     flex: 4,
@@ -54,11 +55,10 @@ const styles = StyleSheet.create({
   },
   commentCount: {
     fontSize: 14,
+    top: -5,
   },
   commentIcon: {
-    width: 15,
-    height: 15,
-    backgroundColor: 'red',
+    fontSize: 20,
   },
 })
 

@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
+import Icon from 'react-native-vector-icons/Octicons'
 import styles from './styles'
 
 class Post extends Component {
@@ -12,9 +13,10 @@ class Post extends Component {
       descendants: PropTypes.number.isRequired,
     }),
     voteUp: PropTypes.func.isRequired,
+    showComments: PropTypes.func.isRequired,
   }
   render() {
-    const { title, score, url, descendants, voteUp } = this.props.post
+    const { title, score, url, descendants, voteUp, showComments } = this.props.post
 
     return (
       <View style={styles.container}>
@@ -29,16 +31,16 @@ class Post extends Component {
         </View>
 
         <View style={styles.mainContainer}>
-            <Text style={styles.title} numberOfLines={2}>{title}</Text>
-            {url ? <Text style={styles.link} numberOfLines={1}>{url}</Text> : null}
+          <Text style={styles.title} numberOfLines={2}>{title}</Text>
+          {url ? <Text style={styles.link} numberOfLines={1}>{url}</Text> : null}
         </View>
 
-        <View style={styles.commentContainer}>
+        <TouchableHighlight style={styles.commentContainer} onPress={showComments}>
           <View style={styles.group}>
-            <View style={styles.commentIcon} />
-            <Text style={styles.commentCount} numberOfLines={1}>{descendants}</Text>
+            <Icon name='comment' style={styles.commentIcon} />
+            <Text style={styles.commentCount} numberOfLines={1}>1200</Text>
           </View>
-        </View>
+        </TouchableHighlight>
 
 
       </View>
