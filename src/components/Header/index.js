@@ -6,8 +6,16 @@ class Post extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.logo} />
-        <Text style={styles.title}>Hacker News</Text>
+
+        <View style={styles.brand}>
+          <View style={styles.logo} />
+          <Text style={styles.title}>Hacker News</Text>
+        </View>
+
+        <TouchableHighlight style={styles.auth}>
+          <Text>Login</Text>
+        </TouchableHighlight>
+
       </View>
     )
   }
