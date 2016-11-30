@@ -5,7 +5,12 @@
  * loggedIn
  */
 
-const reducer = (state = {}, action) => {
+const defaultUser = {
+  username: 'shmck',
+  email: 'shawn.j.mckay@gmail.com',
+}
+
+const reducer = (state = defaultUser, action) => {
   return state
 }
 
