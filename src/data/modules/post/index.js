@@ -13,7 +13,7 @@
  */
 
 // fetch polyfill that works with node tests
-import fetch from 'isomorphic-fetch'
+// import fetch from 'isomorphic-fetch'
 import { POSTS_LOAD } from '../../actions'
 
 export const postsLoad = () => dispatch => {
@@ -22,7 +22,7 @@ export const postsLoad = () => dispatch => {
     .then(data => data.json())
     .then((postIds: number[]) => {
       // TODO: figure out how to limit Firebase queries
-      const posts = postIds.split(0, 10)
+      const posts = postIds.slice(0, 10)
       dispatch({ type: POSTS_LOAD, payload: { posts } })
     })
 }
