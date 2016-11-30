@@ -17,7 +17,12 @@ class PostList extends Component {
         <Header />
         <View style={styles.postContainer}>
           {this.posts.map(post => {
-            return <Post key={post.id} post={post} voteUp={() => { } } />
+            return <Post
+              key={post.id}
+              post={post}
+              voteUp={() => { } }
+              showComments={() => { } }
+              />
           })}
         </View>
       </ScrollView>
