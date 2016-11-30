@@ -1,0 +1,13 @@
+{
+  "extends": "react-app",
+  "rules": {
+    "semi": ["warn", "never"],
+    "comma-dangle": ["warn", {
+      "arrays": "never",
+      "objects": "always-multiline",
+      "imports": "never",
+      "exports": "never",
+      "functions": "ignore"
+    }]
+  }
+}
