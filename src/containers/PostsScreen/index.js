@@ -7,9 +7,16 @@ import realm from '../../data/db'
 import Header from '../../components/Header'
 import Post from '../../components/Post'
 
-class PostList extends Component {
+class PostsScreen extends Component {
+  static route = {
+    navigationBar: {
+      title: 'Posts',
+    },
+  }
   componentWillMount() {
-    this.posts = realm.objects('Post').sorted('score', { ascending: false }).slice(0, 10)
+    this.posts = realm.objects('Post')
+      .sorted('score', { ascending: false })
+      .slice(0, 10)
   }
   render() {
     return (
@@ -34,4 +41,4 @@ const mapStateToProps = state => ({
   posts: state.post,
 })
 
-export default connect(mapStateToProps)(PostList)
+export default connect(mapStateToProps)(PostsScreen)

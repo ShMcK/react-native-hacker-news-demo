@@ -10,13 +10,13 @@ class Post extends Component {
       title: PropTypes.string.isRequired,
       score: PropTypes.number.isRequired,
       url: PropTypes.string,
-      descendants: PropTypes.number.isRequired,
+      commentCount: PropTypes.number.isRequired,
     }),
     voteUp: PropTypes.func.isRequired,
     showComments: PropTypes.func.isRequired,
   }
   render() {
-    const { title, score, url, descendants, voteUp, showComments } = this.props.post
+    const { title, score, url, commentCount, voteUp, showComments } = this.props.post
 
     return (
       <View style={styles.container}>
@@ -38,7 +38,7 @@ class Post extends Component {
         <TouchableHighlight style={styles.commentContainer} onPress={showComments}>
           <View style={styles.group}>
             <Icon name='comment' style={styles.commentIcon} />
-            <Text style={styles.commentCount} numberOfLines={1}>1200</Text>
+            <Text style={styles.commentCount} numberOfLines={1}>{commentCount}</Text>
           </View>
         </TouchableHighlight>
 

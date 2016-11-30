@@ -5,9 +5,9 @@
  */
 
 import React, { Component } from 'react'
-import { StyleSheet, Text, View } from 'react-native'
+import { NavigationProvider, StackNavigation } from '@exponent/ex-navigation'
+import Router from './router'
 import { Provider } from 'react-redux'
-import PostList from './containers/PostList'
 
 // load Redux
 // TODO: setup react-redux Provider to connect components
@@ -20,9 +20,10 @@ export default class HackerNews extends Component {
   render() {
     return (
       <Provider store={store}>
-        <PostList />
+        <NavigationProvider router={Router}>
+          <StackNavigation initialRoute={Router.getRoute('posts')} />
+        </NavigationProvider>
       </Provider>
     )
   }
 }
-
