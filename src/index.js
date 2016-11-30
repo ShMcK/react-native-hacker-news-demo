@@ -10,6 +10,7 @@ import { StyleSheet, Text, View } from 'react-native'
 // load Redux
 // TODO: setup react-redux Provider to connect components
 import store from './data/store'
+import init from './data/init'
 
 export default class HackerNews extends Component {
   render() {

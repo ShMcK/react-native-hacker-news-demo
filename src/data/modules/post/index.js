@@ -1,6 +1,8 @@
 /** 
  * Post
  * 
+ * data: an object containing keys of post ids
+ * 
  * load Posts
  * add Post
  * voteUp Post
@@ -25,12 +27,17 @@ export const postsLoad = () => dispatch => {
     })
 }
 
-const reducer = (state = {}, action) => {
+const reducer = (state: Object = {}, action) => {
   switch (action.type) {
 
     case POSTS_LOAD:
-      return action.payload.posts
-      
+      action.payload.posts.forEach(id => {
+        if (!state[id]) {
+          state[id] = {}
+        }
+      })
+      return state
+
     default:
       return state
   }
