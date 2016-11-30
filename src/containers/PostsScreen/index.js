@@ -23,14 +23,13 @@ class PostsScreen extends Component {
       <ScrollView contentContainerStyle={styles.container}>
         <Header />
         <View style={styles.postContainer}>
-          {this.posts.map(post => {
-            return <Post
+          {this.posts.map((post, i) => (
+            <Post
               key={post.id}
               post={post}
               voteUp={() => { } }
-              showComments={() => { } }
               />
-          })}
+          ))}
         </View>
       </ScrollView>
     )

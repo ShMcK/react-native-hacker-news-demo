@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 import styles from './styles'
 
-class Post extends Component {
+class Comment extends Component {
   static propTypes = {
 
   }
@@ -15,4 +15,4 @@ class Post extends Component {
   }
 }
 
-export default Post
+export default Comment

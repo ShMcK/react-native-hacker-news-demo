@@ -1,11 +1,14 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  container: {
+  outer: {
+    flexDirection: 'column',
+    alignItems: 'flex-start',
+  },
+  card: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    marginBottom: 20,
     borderRadius: 5,
     padding: 8,
     backgroundColor: 'white',
@@ -16,6 +19,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.5,
     shadowRadius: 3,
+    marginBottom: 20,
   },
   group: {
     flex: 1,

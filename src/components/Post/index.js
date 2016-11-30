@@ -2,6 +2,7 @@ import React, { Component, PropTypes } from 'react'
 import { View, Text, TouchableHighlight } from 'react-native'
 import Icon from 'react-native-vector-icons/Octicons'
 import styles from './styles'
+import Comments from '../Comments'
 
 class Post extends Component {
   static propTypes = {
@@ -13,35 +14,48 @@ class Post extends Component {
       commentCount: PropTypes.number.isRequired,
     }),
     voteUp: PropTypes.func.isRequired,
-    showComments: PropTypes.func.isRequired,
+  }
+  constructor(props) {
+    super(props)
+    this.state = {
+      toggleComments: false,
+    }
+  }
+  showComments() {
+    this.setState({ toggleComments: !this.state.toggleComments })
   }
   render() {
-    const { title, score, url, commentCount, voteUp, showComments } = this.props.post
+    const { title, score, url, commentCount } = this.props.post
+    const { voteUp } = this.props
 
     return (
-      <View style={styles.container}>
+      <View style={styles.outer}>
+        <View style={styles.card}>
 
-        <View style={styles.scoreContainer}>
-          <View style={styles.group}>
-            <TouchableHighlight style={styles.scoreButton} onPress={voteUp}>
-              <Text>▲</Text>
-            </TouchableHighlight>
-            <Text style={styles.score} numberOfLines={1}>{score}</Text>
+          <View style={styles.scoreContainer}>
+            <View style={styles.group}>
+              <TouchableHighlight style={styles.scoreButton} onPress={voteUp}>
+                <Text>▲</Text>
+              </TouchableHighlight>
+              <Text style={styles.score} numberOfLines={1}>{score}</Text>
+            </View>
           </View>
+
+          <View style={styles.mainContainer}>
+            <Text style={styles.title} numberOfLines={2}>{title}</Text>
+            {url ? <Text style={styles.link} numberOfLines={1}>{url}</Text> : null}
+          </View>
+
+          <TouchableHighlight style={styles.commentContainer} onPress={() => this.showComments()}>
+            <View style={styles.group}>
+              <Icon name='comment' style={styles.commentIcon} />
+              <Text style={styles.commentCount} numberOfLines={1}>{commentCount}</Text>
+            </View>
+          </TouchableHighlight>
+
         </View>
 
-        <View style={styles.mainContainer}>
-          <Text style={styles.title} numberOfLines={2}>{title}</Text>
-          {url ? <Text style={styles.link} numberOfLines={1}>{url}</Text> : null}
-        </View>
-
-        <TouchableHighlight style={styles.commentContainer} onPress={showComments}>
-          <View style={styles.group}>
-            <Icon name='comment' style={styles.commentIcon} />
-            <Text style={styles.commentCount} numberOfLines={1}>{commentCount}</Text>
-          </View>
-        </TouchableHighlight>
-
+        {this.state.toggleComments ? <Comments /> : null}
 
       </View>
     )

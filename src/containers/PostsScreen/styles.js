@@ -12,6 +12,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     padding: 8,
   },
+  postItemContainer: {
+    flex: 1,
+    flexDirection: 'column',
+  },
 })
 
 export default styles
