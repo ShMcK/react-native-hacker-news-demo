@@ -15,6 +15,7 @@
 // fetch polyfill that works with node tests
 // import fetch from 'isomorphic-fetch'
 import { POSTS_LOAD } from '../../actions'
+import { savePostById } from './save'
 
 export const postsLoad = () => dispatch => {
   // HackerNews API docs: https://github.com/HackerNews/API
@@ -34,6 +35,7 @@ const reducer = (state: Object = {}, action) => {
       action.payload.posts.forEach(id => {
         if (!state[id]) {
           state[id] = {}
+          savePostById(id)
         }
       })
       return state

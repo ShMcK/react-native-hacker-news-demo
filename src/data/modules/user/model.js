@@ -3,7 +3,7 @@ User.schema = {
   name: 'User',
   primaryKey: 'id',
   properties: {
-    id: { type: 'number' },
+    id: 'int',
     username: 'string',
     email: 'string',
   },

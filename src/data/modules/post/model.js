@@ -3,9 +3,9 @@ Post.schema = {
   name: 'Post',
   primaryKey: 'id',
   properties: {
-    id: 'number',
+    id: 'int',
     title: 'string',
-    score: { type: 'number', indexed: true },
+    score: { type: 'int', indexed: true, default: 0 },
     url: 'string',
   },
 }

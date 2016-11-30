@@ -2,16 +2,18 @@ import React, { Component } from 'react'
 import { View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './styles'
+import realm from '../../data/db'
 
 class PostList extends Component {
+  componentWillMount() {
+    this.posts = realm.objects('Post').sorted('score').slice(0, 10)
+  }
   render() {
-    console.log(this.props.posts)
-    const keys = Object.keys(this.props.posts)
     return (
       <View style={styles.container}>
         <Text>PostList</Text>
         {
-          keys.map(id => <Text>{id.toString()}</Text>)
+          this.posts.map(({title}) => <Text>{title}</Text>)
         }
       </View>
     )
