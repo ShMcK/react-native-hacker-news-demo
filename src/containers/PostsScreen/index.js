@@ -3,20 +3,22 @@ import { ScrollView, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './styles'
 import realm from '../../data/db'
-import Header from '../../components/Header'
+import Brand from '../../components/Brand'
 import Post from '../../components/Post'
+import Link from '../../components/Link'
 import { postVote } from '../../data/modules/post'
 
 class PostsScreen extends Component {
   static route = {
     navigationBar: {
-      title: 'Posts',
+      renderLeft: () => <Brand />,
+      renderRight: () => <View style={styles.link}><Link route='auth' /></View>,
+      backgroundColor: 'lightgrey',
     },
   }
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
-        <Header />
         <View style={styles.postContainer}>
           {this.props.posts.map((post, i) => (
             <Post

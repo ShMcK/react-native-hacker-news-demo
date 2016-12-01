@@ -16,6 +16,12 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
   },
+  link: {
+    flex: 1,
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
+  }
 })
 
 export default styles

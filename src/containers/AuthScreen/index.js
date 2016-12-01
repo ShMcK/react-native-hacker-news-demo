@@ -2,12 +2,13 @@ import React, { Component } from 'react'
 import { View, Text, TextInput, TouchableHighlight } from 'react-native'
 // import { connect } from 'react-redux'
 import styles from './styles'
-import Header from '../../components/Header'
+import Brand from '../../components/Brand'
 
 class AuthScreen extends Component {
   static route = {
     navigationBar: {
       title: 'Login',
+      backgroundColor: 'lightgrey',
     },
   }
   constructor(props) {
@@ -22,7 +23,7 @@ class AuthScreen extends Component {
       <View style={styles.container}>
 
         <View style={styles.top}>
-          <Header />
+          <Brand />
         </View>
 
         <View style={[styles.card, styles.shadow]}>
