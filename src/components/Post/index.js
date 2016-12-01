@@ -32,14 +32,14 @@ class Post extends Component {
       <View style={styles.outer}>
         <View style={styles.card}>
 
-          <View style={styles.scoreContainer}>
+          <TouchableHighlight style={styles.scoreContainer} onPress={voteUp}>
             <View style={styles.group}>
-              <TouchableHighlight style={styles.scoreButton} onPress={voteUp}>
+              <View style={styles.scoreButton}>
                 <Text>▲</Text>
-              </TouchableHighlight>
+              </View>
               <Text style={styles.score} numberOfLines={1}>{score}</Text>
             </View>
-          </View>
+          </TouchableHighlight>
 
           <View style={styles.mainContainer}>
             <Text style={styles.title} numberOfLines={2}>{title}</Text>
