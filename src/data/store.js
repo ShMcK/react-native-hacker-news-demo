@@ -6,6 +6,7 @@
  * - application events that modify state
  */
 import { createStore, applyMiddleware } from 'redux'
+import { createNavigationEnabledStore} from '@exponent/ex-navigation'
 import thunkMiddleware from 'redux-thunk'
 import rootReducer from './reducers'
 
@@ -15,6 +16,11 @@ const middlewareList = [
   thunkMiddleware
 ]
 
-const store = createStore(rootReducer, initialState, applyMiddleware(...middlewareList))
+const createStoreWithNavigation = createNavigationEnabledStore({
+  createStore,
+  navigationStateKey: 'navigation',
+})
+
+const store = createStoreWithNavigation(rootReducer, initialState, applyMiddleware(...middlewareList))
 
 export default store

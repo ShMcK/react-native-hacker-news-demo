@@ -14,8 +14,10 @@
 
 // fetch polyfill that works with node tests
 // import fetch from 'isomorphic-fetch'
-import { POSTS_LOAD } from '../../actions'
+import { POSTS_LOAD, POST_VOTE } from '../../actions'
 import { savePostById } from './save'
+import { updatePostById } from './update'
+import realm from '../../db'
 
 export const postsLoad = () => dispatch => {
   // HackerNews API docs: https://github.com/HackerNews/API
@@ -28,17 +30,24 @@ export const postsLoad = () => dispatch => {
     })
 }
 
-const reducer = (state: Object = {}, action) => {
+export const postVote = (id) => {
+  return { type: POST_VOTE, payload: { id } }
+}
+
+const reducer = (state = {}, action) => {
   switch (action.type) {
 
     case POSTS_LOAD:
-      action.payload.posts.forEach(id => {
-        if (!state[id]) {
-          state[id] = {}
-          savePostById(id)
-        }
-      })
-      return state
+      // save to db
+      action.payload.posts.forEach(id => savePostById(id))
+
+      return {}
+
+    case POST_VOTE:
+      const score = realm.objects('Post').filtered(`id = ${action.payload.id}`)[0].score
+      // save to db
+      updatePostById(action.payload.id, { score: score + 1 })
+      return {}
 
     default:
       return state

@@ -3,9 +3,9 @@ import { ScrollView, View, Text } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './styles'
 import realm from '../../data/db'
-
 import Header from '../../components/Header'
 import Post from '../../components/Post'
+import { postVote } from '../../data/modules/post'
 
 class PostsScreen extends Component {
   static route = {
@@ -13,21 +13,16 @@ class PostsScreen extends Component {
       title: 'Posts',
     },
   }
-  componentWillMount() {
-    this.posts = realm.objects('Post')
-      .sorted('score', { ascending: false })
-      .slice(0, 10)
-  }
   render() {
     return (
       <ScrollView contentContainerStyle={styles.container}>
         <Header />
         <View style={styles.postContainer}>
-          {this.posts.map((post, i) => (
+          {this.props.posts.map((post, i) => (
             <Post
               key={post.id}
               post={post}
-              voteUp={() => { } }
+              voteUp={() => this.props.vote(post.id)}
               />
           ))}
         </View>
@@ -36,8 +31,14 @@ class PostsScreen extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  posts: state.post,
+const mapStateToProps = (state) => ({
+  posts: realm.objects('Post').sorted('score', { ascending: false }).slice(0, 10),
 })
 
-export default connect(mapStateToProps)(PostsScreen)
+const mapDispatchToProps = dispatch => ({
+  vote(id) {
+    dispatch(postVote(id))
+  },
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(PostsScreen)

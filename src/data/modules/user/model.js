@@ -1,4 +1,4 @@
-class User {}
+export class User {}
 User.schema = {
   name: 'User',
   primaryKey: 'id',
@@ -8,5 +8,3 @@ User.schema = {
     email: 'string',
   },
 }
-
-export default User

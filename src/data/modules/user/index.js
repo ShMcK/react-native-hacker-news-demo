@@ -6,6 +6,7 @@
  */
 
 const defaultUser = {
+  id: 1,
   username: 'shmck',
   email: 'shawn.j.mckay@gmail.com',
 }
