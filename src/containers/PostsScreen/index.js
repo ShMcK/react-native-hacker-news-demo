@@ -18,7 +18,10 @@ class PostsScreen extends Component {
   }
   render() {
     return (
-      <ScrollView contentContainerStyle={styles.container}>
+      <ScrollView
+        endFillColor='lightgrey'
+        bounces={true}
+        contentContainerStyle={styles.container}>
         <View style={styles.postContainer}>
           {this.props.posts.map((post, i) => (
             <Post

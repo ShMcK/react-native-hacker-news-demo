@@ -1,14 +1,6 @@
 /** 
  * Post
- * 
- * data: an object containing keys of post ids
- * 
- * load Posts
- * add Post
- * voteUp Post
- * sort Posts
- * add Post Comment
- * 
+ *  
  * @flow
  */
 

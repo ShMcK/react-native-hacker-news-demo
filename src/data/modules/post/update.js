@@ -10,10 +10,8 @@ export function updatePostById(id: number, obj) {
 
     const update = Object.assign(obj, { id })
 
-    console.log(update.score)
-
     // save to client db
     realm.create('Post', update, true) // overwrite old data
-
+    
   })
 }
